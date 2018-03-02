@@ -1,0 +1,35 @@
+#dashboard {
+    max-width: 900px;
+    padding: 3px;
+    margin: 1px;
+    background: #eee;
+    font: 16px sans-serif;
+}
+
+
+
+p {
+    text-align: center;
+}
+
+#line-chart {
+}
+
+svg {
+    shape-rendering: geometricPrecision;
+    font: 14px sans-serif;
+}
+
+.rule line {
+    stroke: white;
+}
+
+@media screen and (max-width: 600 px) {
+    #dashboard {
+        max-width: 400;
+        padding: 3px;
+        margin: 1px;
+        background: #eee;
+        font: 16px sans-serif;
+    }
+}
