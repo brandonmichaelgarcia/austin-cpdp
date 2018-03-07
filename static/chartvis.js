@@ -3,6 +3,9 @@ var Chart = (function(window,d3) {
     var svg, data, x, y, xAxis, yAxis, dim, chartWrapper, line, path, margin = {}, width, height;
     var breakPoint = 600;
     var chart_id = 0;
+    var chart_titles = ["total count of officer-involved shooting incidents","total count of subjects killed in officer-involved shootings"]
+    var chartHelpText = ["The y-axis shows the total number of incidents in which an APD officer shot a person during a police interaction in a given year.", "The y-axis shows the total number of persons killed in officer-involved shooting incidents in a given year."]
+
     d3.csv('/static/data/ois.csv', init); //load data, then initialize chart
 
     //called once the data is loaded
@@ -37,7 +40,8 @@ var Chart = (function(window,d3) {
         path = chartWrapper.append('path').datum(data).classed('line', true);
         chartWrapper.append('g').classed('x axis', true);
         chartWrapper.append('g').classed('y axis', true);
-        chartWrapper.on('mousemove', identifyMouse)
+        chartWrapper.on('mousemove', identifyMouse);
+        chartWrapper.on('touchmove', identifyTouch);
         
         
         //add locator and text
@@ -54,7 +58,14 @@ var Chart = (function(window,d3) {
 
         bisect = d3.bisector(function(d){ return d.date; }).left;
 
-        //render the chart
+        //render the chart and menu
+        var options = d3.select("#chart_id")
+                            .selectAll('option')
+                            .data(chart_titles).enter()
+                            .append('option')
+                                .text(function (d) { return d; })
+                                .attr('value', function(d,i) { return i.toString(); });
+
         window.addEventListener('resize', render);
         render();
     }
@@ -150,7 +161,7 @@ var Chart = (function(window,d3) {
         margin.left = (winWidth < breakPoint) ? 10 : 50;
         margin.bottom = 50;
 
-        width = (winWidth > breakPoint) ? 750 - margin.left - margin.right : 350 - margin.left - margin.right;
+        width = (winWidth > breakPoint) ? 750 - margin.left - margin.right : 270 - margin.left - margin.right;
         height = 0.55*width;
     }
 
@@ -165,8 +176,15 @@ var Chart = (function(window,d3) {
     }
 
     function identifyMouse(){
-        var YEAR_START = 1900;
-        var coordinates = d3.mouse(this);
+        identifyPoint(d3.mouse(this));
+    }
+
+    function identifyTouch(){
+        identifyPoint(d3.touches(this));
+
+    }
+
+    function identifyPoint(coordinates){
         var xPos = adjustYear(x.invert(coordinates[0]));
         var pos = bisect(data, xPos);
         locator
@@ -212,7 +230,8 @@ var Chart = (function(window,d3) {
     }
 
     function changeChart(){
-        chart_id = d3.select("#chart_id").property('value');
+        chart_id = d3.select("#chart_id").property('value');  
+        chartHelpTextUpdate();              
         render();
     }
 
@@ -227,6 +246,10 @@ var Chart = (function(window,d3) {
             ++i;
             setTimeout(slideshow, 5000);
         }      
+    }
+
+    function chartHelpTextUpdate() {
+        d3.select("#chartHelpBlock").text(chartHelpText[chart_id]);
     }
 
     return {
