@@ -1,18 +1,25 @@
 #dashboard {
-    max-width: 900px;
-    padding: 3px;
-    margin: 1px;
-    background: #eee;
+    max-width: 1000px;
+    margin-top: 100px;
+}
+
+.vis-menu {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+#chart {
+    background: white;
     font: 16px sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-
-
-p {
-    text-align: center;
-}
-
-#line-chart {
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
 }
 
 svg {
@@ -20,16 +27,37 @@ svg {
     font: 14px sans-serif;
 }
 
-.rule line {
-    stroke: white;
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+circle.dot {
+    fill: steelblue;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  stroke-width: px;
+  shape-rendering: geometricPrecision;
+}
+
+.x.axis path {
+  display: none;
 }
 
 @media screen and (max-width: 600 px) {
     #dashboard {
         max-width: 400;
-        padding: 3px;
-        margin: 1px;
-        background: #eee;
-        font: 16px sans-serif;
     }
 }

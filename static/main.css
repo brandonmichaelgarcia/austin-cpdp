@@ -14,7 +14,7 @@ body {
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 14px;
     text-decoration: none;
     font-size: 17px;
   }
@@ -35,12 +35,16 @@ body {
   
   .topnav .icon {
     display: none;
+    font-size: 17px;
+    color: white;
   }
   
   @media screen and (max-width: 800px) {
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
-      float: right;
+      position: absolute;
+      right: 0;
+      top: 0;
       display: block;
     }
   }
@@ -57,77 +61,20 @@ body {
       display: block;
       text-align: left;
     }
-  }
-
-
-/* .topper {
-    left: 0;
-    top: 0;
-    position: fixed;
-    float: left;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 0 8px 0 rgba(0,0,0,0.2); 
-    padding-bottom: 4px;
+    #active {
+        float: none;
+    }
 }
-
-.topper a {
-    color: black;
-    font-size: 20px;
-    font-weight: 300;
-    padding: 8px 20px 8px 20px;
-    text-decoration: none;
-}
-
-#home {
-    background-color: navy;
-    color: white;
-    font-weight: bold;
-    font-family: 'Alegreya Sans SC', sans-serif;
-}
-
-.topnav {
-    float: right;
-    padding-right: 50px;
-}
-
-.pocket a
-{
-    position: relative;
-    margin: 0px 10px;
-    padding: 10px 10px;
-    z-index: 0;
-    font-size: 20px;
-    color: black;
-    text-decoration: none;
-    font-family: 'Alegreya Sans SC', sans-serif;
-}
-
-.pocket a:hover {
-} */
-
-.pullRight a:before {
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    content: '';
-    background: navy;
-    opacity: 0.3;
-    transition: all 0.3s;
-}
-
-.pullRight a:hover:before {
-    width: 100%;           
-}
-
-
 
 
 .container {
     max-width: 1000px;
-    margin-top: 80px;
+    margin-top: 20px;
+}
+
+h4 {
+    font-weight: bold;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 
@@ -142,11 +89,12 @@ body {
 }
 
 .footer a{
-    padding: 8px 8px 8px 32px;            
+    padding: 3px 20px 3px 20px;            
     float: right;
     color: black;
     text-decoration: none;
     font-size: 16px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

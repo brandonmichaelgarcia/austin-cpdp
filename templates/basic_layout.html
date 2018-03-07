@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<title>Austin-CPDP</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Open+Sans:300,400" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chartvis.css') }}">
+</head>
+<body id="topofpage">
+<div class="topnav" id="responsiveNav">
+    <a href="\" id="active">austin citizens police data project</a>
+    <a href="\contact">contact</a>
+    <a href="\faq">faq</a>
+    <a href="\about">about the data</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+{% block body %}{% endblock %}
+<div class="modal fade" id="disclaimerModal" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h3 class="modal-title" id="disclaimerModalLabel">Disclaimer</h3>   
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>The information provided on Austin-CPDP comes primarily from publicly available data from the City of Austin.</p>
+                        <p>By entering this website, you acknowledge that the Austin Citizens’ Police Data Project (Austin-CPDP) is not responsible for any derivative work performed by or published by users of this public database.</p>
+                        <p>We welcome questions, critiques, and, of course, more eyes on the data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <a data-toggle="modal" data-target="#disclaimerModal">legal notice</a>
+</div>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>        
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="{{ url_for('static', filename='chartvis.js') }}"></script>
+<script src="{{ url_for('static', filename='navigation.js') }}"></script>
+</html>
